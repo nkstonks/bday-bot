@@ -112,5 +112,6 @@ keep_alive.keep_alive()
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
+print(token)
 
 bot.run(token)
