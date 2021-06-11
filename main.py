@@ -39,13 +39,14 @@ async def on_ready():
 
 @bot.command(name="ping")
 async def ping(ctx):
-    latency = round(bot.latency, 1)
+    latency = round(bot.latency, 4) * 1000
 
     await ctx.send(f"Pong! `{latency}ms`")
 
 @bot.command(name="test")
 async def testing_stuff(ctx):
-    await ctx.send("ayo who called me")
+    channel = bot.get_channel(847735920023306250)
+    await channel.send("ayo who called me")
 
 @bot.command(name="utc")
 async def utc_time(ctx):
@@ -81,12 +82,12 @@ def is_midnight():
     else: 
         return False
 
-@tasks.loop(seconds=1)
+@tasks.loop(minutes=1)
 async def bday_check():
     date = get_utc_date()
     midnight = is_midnight()
     list_of_bday_boy_or_girl = []
-    channel = bot.get_channel(852460631222517780)
+    channel = bot.get_channel(847735920023306250)
 
     if midnight:
         for name in list_of_bdays:
