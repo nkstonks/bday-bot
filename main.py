@@ -1,7 +1,5 @@
-
 import os
 from discord import channel
-from dotenv import load_dotenv
 import keep_alive
 from discord.ext import commands, tasks
 from datetime import date, datetime
@@ -115,8 +113,6 @@ async def before():
 bday_check.start()
 keep_alive.keep_alive()
 
-load_dotenv()
 token = os.environ['DISCORD_TOKEN']
-
 
 bot.run(token)
