@@ -1,3 +1,4 @@
+
 import os
 from discord import channel
 from dotenv import load_dotenv
@@ -33,6 +34,10 @@ list_of_bdays = {
     "SoluZ": "27/11",
     "Tesla04": "/12"
 }
+
+@bot.event
+async def on_ready():
+  print("Bot is online!")
 
 @bot.command(name="ping")
 async def ping(ctx):
@@ -111,6 +116,7 @@ bday_check.start()
 keep_alive.keep_alive()
 
 load_dotenv()
-token = os.getenv("DISCORD_TOKEN")
+token = os.environ['DISCORD_TOKEN']
+
 
 bot.run(token)
