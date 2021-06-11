@@ -47,7 +47,8 @@ async def ping(ctx):
 
 @bot.command(name="test")
 async def testing_stuff(ctx):
-    await ctx.send("ayo who called me")
+    channel = bot.get_channel(847735920023306250)
+    await channel.send("ayo who called me")
 
 @bot.command(name="utc")
 async def utc_time(ctx):
