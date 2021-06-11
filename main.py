@@ -41,7 +41,7 @@ async def on_ready():
 
 @bot.command(name="ping")
 async def ping(ctx):
-    latency = bot.latency
+    latency = round(bot.latency, 4) * 1000
 
     await ctx.send(f"Pong! `{latency}ms`")
 
@@ -83,7 +83,7 @@ def is_midnight():
     else: 
         return False
 
-@tasks.loop(seconds=1)
+@tasks.loop(minutes=1)
 async def bday_check():
     date = get_utc_date()
     midnight = is_midnight()
