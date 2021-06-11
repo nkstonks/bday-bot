@@ -41,7 +41,7 @@ async def on_ready():
 
 @bot.command(name="ping")
 async def ping(ctx):
-    latency = round(bot.latency, 1)
+    latency = bot.latency
 
     await ctx.send(f"Pong! `{latency}ms`")
 
