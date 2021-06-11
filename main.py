@@ -88,7 +88,7 @@ async def bday_check():
     date = get_utc_date()
     midnight = is_midnight()
     list_of_bday_boy_or_girl = []
-    channel = bot.get_channel(852460631222517780)
+    channel = bot.get_channel(847735920023306250)
 
     if midnight:
         for name in list_of_bdays:
