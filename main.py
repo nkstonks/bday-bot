@@ -82,7 +82,7 @@ async def list_bday(ctx):
     if thing == 0 or thing == "0":
         to_send = "There are no Birthdays today ):"
     else:
-        to_send = "Today's birthdays are: " + names
+        to_send = "Today's birthday(s) are: " + names
 
     await ctx.send(to_send)
 
