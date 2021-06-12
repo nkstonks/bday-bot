@@ -63,8 +63,9 @@ async def utc_time(ctx):
 
     await ctx.send(f"Date for UTC (day/month): `{date}`")
 
-bot.command(name="list")
+@bot.command(name="list")
 async def list_bday(ctx):
+    date = get_utc_date()
     list_of_bday_boy_or_girl = []
     channel = bot.get_channel(847735920023306250)
 
@@ -73,11 +74,17 @@ async def list_bday(ctx):
         if names_bday in date:
             list_of_bday_boy_or_girl.append(name)
         else:
-            string = None
+            continue
 
-        for string in list_of_bday_boy_or_girl:
-            to_send = "Today's birthday boy(s)/girl(s) are: " + " ".join(name for name in string)
-            await channel.send(to_send)
+    names = " ".join(list_of_bday_boy_or_girl)
+    thing = len(names)
+
+    if thing == 0 or thing == "0":
+        to_send = "There are no Birthdays today ):"
+    else:
+        to_send = "Today's birthdays are: " + names
+
+    await ctx.send(to_send)
 
 def get_utc_date():
     time = datetime.utcnow().date()
