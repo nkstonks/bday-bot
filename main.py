@@ -15,7 +15,7 @@ list_of_bdays = {
     "Yu": "2/2",
     "Gamerdood": "8/2",
     "The non-existing are?": "30/2",
-    "nkstonks": "12/6",
+    "nkstonks": "3/3",
     "Hikari": "4/3",
     "Vixen": "13/3",
     "Cz": "/4",
