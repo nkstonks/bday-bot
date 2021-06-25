@@ -35,6 +35,29 @@ list_of_bdays = {
     "Tesla04": "/12"
 }
 
+
+def get_utc_date():
+    time = datetime.utcnow().date()
+    month = str(time.month)
+    day = str(time.day)
+
+    date_list = []
+    date_list.append(day)
+    date_list.append(month)
+
+    date = "/".join(date_list)
+    return date
+
+
+def is_midnight():
+    time = datetime.utcnow().time()
+    hour = time.hour
+    minute = time.minute
+    if hour == 0 and minute == 0:
+        return True
+    else:
+        return False
+
 @bot.event
 async def on_ready():
   print("Bot is online!")
@@ -68,10 +91,11 @@ async def help(ctx):
         title="List of commands",
         description=
         """
-        `bdays`: Displays the birthdays of today
-        `utc`: Displays the date of UTC when the command was ran
-        `ping`: Displays ping
-        `test`: lmao idk
+        `bdays` Displays the birthdays of today
+        `utc`   Displays the date of UTC when the command was ran
+        `ping`  Displays ping
+        `test`  lmao idk
+        `list`  Displays the whole list of birthdays 
         """,
         color=discord.Color.blurple()
     )
@@ -101,26 +125,26 @@ async def list_bday(ctx):
 
     await ctx.send(to_send)
 
-def get_utc_date():
-    time = datetime.utcnow().date()
-    month = str(time.month)
-    day = str(time.day)
+@bot.command(name="list")
+async def list_all_bdays(ctx):
+    to_add = ""
 
-    date_list = []
-    date_list.append(day)
-    date_list.append(month)
+    for name in list_of_bdays:
+        if list_of_bdays[name] == "/4":
+            to_add += f"{name}: Sometime in April\n"
 
-    date = "/".join(date_list)
-    return date
+        elif list_of_bdays[name] == "/6":
+            to_add += f"{name}: Sometime in June\n"
+        
+        elif list_of_bdays[name] == "/12":
+            to_add += f"{name}: Sometime in December\n"
 
-def is_midnight():
-    time = datetime.utcnow().time()
-    hour = time.hour
-    minute = time.minute
-    if hour == 0 and minute == 0:
-        return True
-    else: 
-        return False
+        else:
+            to_add += f"{name}: {list_of_bdays[name]}\n"
+    
+    embed = discord.Embed(title="Full list of birthdays (date/month)", description=to_add, color=discord.Color.blurple())
+    
+    await ctx.send(embed=embed)
 
 @tasks.loop(minutes=1)
 async def bday_check():
