@@ -1,5 +1,7 @@
 import os
-from discord import channel
+from discord import channel, colour
+import discord
+from dotenv import load_dotenv
 import keep_alive
 from discord.ext import commands, tasks
 from datetime import date, datetime
@@ -45,8 +47,7 @@ async def ping(ctx):
 
 @bot.command(name="test")
 async def testing_stuff(ctx):
-    channel = bot.get_channel(847735920023306250)
-    await channel.send("ayo who called me")
+    await ctx.send("ayo who called me")
 
 @bot.command(name="utc")
 async def utc_time(ctx):
@@ -61,7 +62,23 @@ async def utc_time(ctx):
 
     await ctx.send(f"Date for UTC (day/month): `{date}`")
 
-@bot.command(name="list")
+@bot.command(name="help")
+async def help(ctx):
+    embed = discord.Embed(
+        title="List of commands",
+        description=
+        """
+        `bdays`: Displays the birthdays of today
+        `utc`: Displays the date of UTC when the command was ran
+        `ping`: Displays ping
+        `test`: lmao idk
+        """,
+        color=discord.Color.blurple()
+    )
+
+    await ctx.send(embed=embed)
+
+@bot.command(name="bdays")
 async def list_bday(ctx):
     date = get_utc_date()
     list_of_bday_boy_or_girl = []
@@ -137,6 +154,7 @@ async def before():
 bday_check.start()
 keep_alive.keep_alive()
 
-token = os.environ['DISCORD_TOKEN']
+load_dotenv()
+token = os.getenv('DISCORD_TOKEN')
 
 bot.run(token)
