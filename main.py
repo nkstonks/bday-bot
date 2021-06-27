@@ -91,7 +91,7 @@ async def help(ctx):
         title="List of commands",
         description=
         """
-        `bdays` Displays the birthdays of today
+        `today` Displays the birthdays of today
         `utc`   Displays the date of UTC when the command was ran
         `ping`  Displays ping
         `test`  lmao idk
@@ -102,7 +102,7 @@ async def help(ctx):
 
     await ctx.send(embed=embed)
 
-@bot.command(name="bdays")
+@bot.command(name="today")
 async def list_bday(ctx):
     date = get_utc_date()
     list_of_bday_boy_or_girl = []
