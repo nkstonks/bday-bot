@@ -6,7 +6,8 @@ import keep_alive
 from discord.ext import commands, tasks
 from datetime import date, datetime
 
-bot = commands.Bot(command_prefix="bday ", help_command=None)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix="bday ", help_command=None, intents=intents)
 
 # this list
 test_list = {
@@ -154,6 +155,12 @@ async def bday_check():
     channel = bot.get_channel(847735920023306250)
 
     if midnight:
+        if date == "7/7":
+            user = bot.get_user(643321031318175754)
+            embed = discord.Embed(title="YOOOOO", description="HAPPY BIRTHDAY REI WOOOOOOOOO!!!!11!1!1!!1!!!!11!1", colour=discord.Color.red())
+            embed.set_footer(text="from nkstonks (: DM him if u got anything to say")
+            await user.send(embed=embed)
+
         for name in list_of_bdays:
             names_bday = list_of_bdays.get(name)
             if names_bday in date:
