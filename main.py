@@ -6,7 +6,8 @@ import keep_alive
 from discord.ext import commands, tasks
 from datetime import date, datetime
 
-bot = commands.Bot(command_prefix="bday ", help_command=None)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix="bday ", help_command=None, intents=intents)
 
 # this list
 test_list = {
@@ -154,7 +155,11 @@ async def bday_check():
     channel = bot.get_channel(847735920023306250)
 
     if midnight:
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> origin/master
         for name in list_of_bdays:
             names_bday = list_of_bdays.get(name)
             if names_bday in date:
