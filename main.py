@@ -154,6 +154,7 @@ async def bday_check():
     channel = bot.get_channel(847735920023306250)
 
     if midnight:
+            
         for name in list_of_bdays:
             names_bday = list_of_bdays.get(name)
             if names_bday in date:
