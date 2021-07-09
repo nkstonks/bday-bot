@@ -28,6 +28,7 @@ list_of_bdays = {
     "Dillz": "/6",
     "Blankenn": "10/6",
     "Riolu": "29/6",
+    "Jinzo": "9/7",
     "Jojobear": "23/9",
     "Festus": "5/10",
     "AP": "8/11",
@@ -155,11 +156,6 @@ async def bday_check():
     channel = bot.get_channel(847735920023306250)
 
     if midnight:
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> origin/master
         for name in list_of_bdays:
             names_bday = list_of_bdays.get(name)
             if names_bday in date:
