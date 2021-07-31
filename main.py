@@ -27,6 +27,7 @@ list_of_bdays = {
     "Discord": "13/5",
     "Dillz": "/6",
     "Blankenn": "10/6",
+    "Baka": "25/6",
     "Riolu": "29/6",
     "Jinzo": "09/7",
     "Jojobear": "23/9",
