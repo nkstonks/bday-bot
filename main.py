@@ -31,6 +31,7 @@ list_of_bdays = {
     "Riolu": "29/6",
     "Jinzo": "09/7",
     "Jojobear": "23/9",
+    "Nini" : "27/9",
     "Festus": "05/10",
     "AP": "08/11",
     "Catstacks": "20/11",
